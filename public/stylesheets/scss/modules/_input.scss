@@ -1,0 +1,53 @@
+$break-small: 420px;
+$break-medium: 900px;
+.input
+{
+	clear: both;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	@media screen and (max-width: $break-small) 
+	{
+	   	width: 95% !important;
+  	}
+	@media screen and (max-width: $break-medium) 
+	{
+	   	width: 80% !important;
+  	}
+
+	&__field
+	{
+		width: 80% !important;
+		float: left;
+
+		@media screen and (max-width: $break-small) 
+		{
+		   	width: 100% !important;
+	  	}
+		@media screen and (min-width: $break-small) 
+		{
+		   	width: 70% !important;
+	  	}
+	}
+
+	&__btn
+	{
+		float: left;
+		margin-left: 1%;
+		width: 19% !important;
+		height: 34px;
+		line-height: 18px !important;
+		padding: 0 !important;
+		margin-bottom: 20px !important;
+
+		@media screen and (max-width: $break-small) 
+		{
+		   	width: 100% !important;
+		   	margin-left: 0 !important;
+	  	}
+		@media screen and (min-width: $break-small) 
+		{
+		   	width: 29% !important;
+	  	}
+	}
+}

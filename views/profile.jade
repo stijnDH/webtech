@@ -1,0 +1,30 @@
+extends layout
+
+block content
+ nav(class="nav")
+  h2 
+   a(href='/home', class='nav__link') QnA application
+  header
+   a(href='/home', class='__link') Home 
+   a(href='/newdisc', class='__link') Nieuwe discussie
+   a(href='/signout', class='__link') Log uit
+   img(src="#{user.image}", alt="Profielfoto")
+   .dropdown
+    button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+        | #{user.firstName} 
+        span.caret 
+    ul.dropdown-menu.pull-right(role='menu', aria-labelledby='dropdownMenu1')
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') Ingelogd als: 
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') #{user.firstName} #{user.lastName}  
+     li(role='presentation')
+      a(role='menuitem', tabindex='-1', href='/profile') Uw profiel
+ img.body__img(src="#{user.image}", alt="Profielfoto")
+ h1.text-center.login-title  #{user.firstName} #{user.lastName}
+ if user.role == "1"
+  p.text-center U bent ingelogd als een Admin
+ p.text-center Uw email is: #{user.email}
+ div.body__div
+  a(href='/home', class='body__link btn btn-primary btn-lg') Bekijk discussies
+  a(href='/newdisc', class='body__link btn btn-primary btn-lg') Start nieuwe discussies

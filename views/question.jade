@@ -1,0 +1,52 @@
+extends layout
+
+block content
+ nav(class="nav")
+  h2 
+   a(href='/home', class='nav__link') QnA application
+  header
+   a(href='/home', class='__link') Home 
+   a(href='/newdisc', class='__link') Nieuwe discussie
+   a(href='/signout', class='__link') Log uit
+   img(src="#{user.image}", alt="Profielfoto")
+   .dropdown
+    button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+        | #{user.firstName} 
+        span.caret 
+    ul.dropdown-menu.pull-right(role='menu', aria-labelledby='dropdownMenu1')
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') Ingelogd als: 
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') #{user.firstName} #{user.lastName}  
+     li(role='presentation')
+      a(role='menuitem', tabindex='-1', href='/profile') Uw profiel
+ ol.breadcrumb
+  li
+   a(href="/home") Home
+  li
+   a(href="http://localhost:3000/discussion/#{question.discID}") Discussie
+  li.active Vraag
+ h1.text-center #{question.question}
+  if user.role == "1"
+   p
+    a(href="http://localhost:3000/question/#{question._id}/delete") Verwijder vraag
+  p Gepost door: #{question.user}
+ if discussions.close == 0
+  div.input
+   form(id="commentForm", action='', method='POST')
+    input(type='text', name='comment' class='input__field form-control', placeholder='Beantwoord deze vraag!',required)
+    input(type='text', style="display:none" name='questionID' class='questionID form-control', value="#{question._id}")
+    input(type='text', style="display:none" name='username' class='username form-control', value="#{user.firstName} #{user.lastName}")
+    // input(type='text', style="display:none" name='time' class='time form-control', value='')
+    button(class='btn btn-lg btn-primary btn-block question--button input__btn', type='submit') Antwoord!
+
+ div.comments
+  h2(class="comments__title") Reacties:
+  h2
+   input(type='text', style="display:none" name='questionID' class='questionID form-control', value="#{question._id}")
+   input(type='text', style="display:none" name='discussionID' class='discussionID form-control', value="#{question.discID}")
+   input(type='text', style="display:none" name='username' class='username form-control', value="#{user.firstName} #{user.lastName}")
+   ul(class="comments__list")
+
+ script(src="/socket.io/socket.io.js")
+ script(src="/javascripts/comments.js")

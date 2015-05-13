@@ -1,0 +1,27 @@
+$break-small: 420;
+$break-medium: 900px;
+.questions
+{
+	clear: both;
+
+	&__list
+	{
+		padding-left: 0 !important;
+		margin-bottom: 20px;
+	}
+
+	&__title
+	{
+		margin-left: 20%;
+		margin-bottom: 0;
+
+		@media screen and (max-width: $break-small) 
+		{
+		   	margin-left: 5%;
+	  	}
+		@media screen and (max-width: $break-medium) 
+		{
+		   	margin-left: 10%;
+	  	}
+	}
+}

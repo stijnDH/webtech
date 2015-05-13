@@ -1,0 +1,22 @@
+$fontSize1: 16px;
+.breadcrumb
+{
+	& li
+	{
+		display: inline !important;
+		width: 90px;
+		background-color: transparent;
+		max-height: 30px !important;
+		font-size: $fontSize1;
+		line-height: 30px;
+		padding-top: 0px !important;
+		border-radius: 0;
+		box-shadow: none;
+
+		& a
+		{
+			font-size: $fontSize1;
+			float: none;
+		}
+	}
+}

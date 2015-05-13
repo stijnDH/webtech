@@ -1,0 +1,25 @@
+.comments
+{
+	clear: both;
+
+	&__list
+	{
+		padding-left: 0 !important;
+		margin-bottom: 20px;
+		& a
+		{
+			float: none !important;
+
+			& img
+			{
+				max-width: 100%;
+			}
+		}
+	}
+
+	&__title
+	{
+		margin-left: 20%;
+		margin-bottom: 0;
+	}
+}

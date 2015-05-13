@@ -1,0 +1,31 @@
+extends layout
+
+block content
+ nav(class="nav")
+  h2 
+   a(href='/home', class='nav__link') QnA application
+  header
+   a(href='/home', class='__link') Home 
+   a(href='/newdisc', class='__link') Nieuwe discussie
+   a(href='/signout', class='__link') Log uit
+   img(src="#{user.image}", alt="Profielfoto")
+   .dropdown
+    button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+        | #{user.firstName} 
+        span.caret 
+    ul.dropdown-menu.pull-right(role='menu', aria-labelledby='dropdownMenu1')
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') Ingelogd als: 
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') #{user.firstName} #{user.lastName}  
+     li(role='presentation')
+      a(role='menuitem', tabindex='-1', href='/profile') Uw profiel
+ h1.text-center.login-title Open een nieuwe discussie.
+ form(action="" id="form" method="post")
+  div.input
+   input(type="text", class="input__field form-control", name="discname" placeholder="Naam van de discussie")
+   input(type='text', style="display:none", name='close', class='form-control role_reg', value=0, required)
+   input(type="text" name="latitude" value="/" style="display:none")
+   input(type="text" name="longitude" value="/" style="display:none")
+   button(type="submit" class="input__btn btn btn-lg btn-primary btn-block" disabled) Open discussie
+ script(src="/javascripts/geolocation.js")

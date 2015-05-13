@@ -1,0 +1,39 @@
+extends layout
+
+block content
+ nav(class="nav")
+  h2 
+   a(href='/home', class='nav__link') QnA application
+  header
+   a(href='/home', class='__link') Home 
+   a(href='/newdisc', class='__link') Nieuwe discussie
+   a(href='/signout', class='__link') Log uit
+   img(src="#{user.image}", alt="Profielfoto")
+   .dropdown
+    button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+        | #{user.firstName} 
+        span.caret 
+    ul.dropdown-menu.pull-right(role='menu', aria-labelledby='dropdownMenu1')
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') Ingelogd als: 
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') #{user.firstName} #{user.lastName} 
+     li(role='presentation')
+      a(role='menuitem', tabindex='-1', href='/profile') Uw profiel
+ h1.text-center.login-title Welkom #{user.firstName}.
+ a(href='/newdisc', class='CTA__link') Start een nieuwe discussie!
+
+ for d in discussion
+  li.animatedLi.fadeUp
+   h2 #{d.discname}
+   if user.role == "1" && d.close == '0'
+    a(href="http://localhost:3000/discussion/#{d._id}/closed" title="sluit discussie")
+     span(class="glyphicon glyphicon-lock" aria-hidden="true")
+   else if user.role == "1" && d.close == '1'
+    a(href="http://localhost:3000/discussion/#{d._id}/open" title="open discussie")
+     span(class="glyphicon glyphicon-ok" aria-hidden="true")
+   a(href="http://localhost:3000/discussion/#{d._id}") Bekijk discussie 
+   br
+
+ script
+   $('.dropdown-toggle').dropdown()

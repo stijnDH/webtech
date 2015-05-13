@@ -1,0 +1,111 @@
+$break-small: 320px;
+$break-small2: 420px;
+$break-middle: 470px;
+$break-large: 750px;
+
+body
+{
+	padding: 0px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding-top: 160px;
+	background-color: #EEEFF7 !important;
+	color: #3278B3 !important;
+
+	@media screen and (min-width: $break-middle) {
+	    padding-top: 140px;
+  	}
+
+	@media screen and (min-width: $break-large) {
+	    padding-top: 70px;
+  	}
+}
+.logo
+{
+	width: 150px;
+	text-align: center;
+	padding-bottom: 30px;
+}
+.login
+{
+	text-align: center;
+}
+.loginBody
+{
+	background-color: #3278B3 !important;
+	width: 100%;
+	height: 100%;
+	color: white !important;
+}
+.login-title
+{
+	margin-top: 35px;
+	margin-bottom: 30px;
+}
+.body
+{
+	&__img
+	{
+		margin-top: 25px;
+		display: block;
+	    margin-left: auto;
+	    margin-right: auto
+	}
+	&__div
+	{
+		margin-top: 15px;
+		display: block;
+		width: 415px;
+		margin-left: auto;
+		margin-right: auto;
+		@media screen and (max-width: $break-small) 
+		{
+	    	width: 250px;
+  		}
+  		@media screen and (max-width: $break-small2) 
+		{
+	    	width: 250px;
+  		}
+	}
+	&__link
+	{
+		margin-left: 5px;
+		margin-right: 5px;
+		@media screen and (max-width: $break-small2) 
+		{
+	    	
+	    	width: 250px;
+	    	margin-left: auto !important;
+	    	margin-right: auto !important;
+	    	margin-bottom: 10px !important;
+  		}
+	}
+
+}
+h1
+{
+	& p
+	{
+		font-size: 0.5em;
+		color: #3C5996;
+	}
+}
+.CTA__link
+{
+	background-color: #3278B3;
+	width: 180px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 6px;
+	color: white;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+.CTA__link:hover
+{
+	background-color: #2A6496;
+	text-decoration: none;
+	color: white;
+}

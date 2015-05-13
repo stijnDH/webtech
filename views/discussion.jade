@@ -1,0 +1,58 @@
+extends layout
+
+block content
+ nav(class="nav")
+  h2 
+   a(href='/home', class='nav__link') QnA application
+  header
+   a(href='/home', class='__link') Home 
+   a(href='/newdisc', class='__link') Nieuwe discussie
+   a(href='/signout', class='__link') Log uit
+   img(src="#{user.image}", alt="Profielfoto")
+   .dropdown
+    button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+        | #{user.firstName} 
+        span.caret 
+    ul.dropdown-menu.pull-right(role='menu', aria-labelledby='dropdownMenu1')
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') Ingelogd als: 
+     li(role='presentation')
+      p(role='menuitem', tabindex='-1', href='#') #{user.firstName} #{user.lastName}  
+     li(role='presentation')
+      a(role='menuitem', tabindex='-1', href='/profile') Uw profiel
+ ol.breadcrumb
+  li
+   a(href="/home") Home
+  li.active Discussies
+ h1.text-center #{discussion.discname}
+  if discussion.close == 1
+   p Deze discussie is gesloten! 
+    span(class="glyphicon glyphicon-lock" aria-hidden="true")
+  if user.role == "1"
+   if discussion.close == 0
+    p 
+     a(href="http://localhost:3000/discussion/#{discussion._id}/closed") Sluit deze discussie!
+
+ div(class="usercount")
+  span(class="glyphicon glyphicon-user usercount__icon" aria-hidden="true")
+  h3.usercount__number
+  p.usercount__names
+
+ if discussion.close == 0
+  div.input
+   form(id="questionForm", action='', method='POST')
+    input(type='text', name='question' class='input__field form-control', placeholder='Stel hier uw vraag',required)
+    input(type='text', style="display:none" name='discussionID' class='discussionID form-control', value="#{discussion._id}")
+    input(type='text', style="display:none" name='username' class='username form-control', value="#{user.firstName} #{user.lastName}")
+    button(class='btn btn-lg btn-primary btn-block input__btn', type='submit') Shoot!
+
+ div.questions
+  h2(class='questions__title') Vragen:
+  h2
+   input(type='text', style="display:none" name='discussionID' class='discussionID form-control', value="#{discussion._id}")
+   input(type='text', style="display:none" name='username' class='username form-control', value="#{user.firstName} #{user.lastName}")
+   ul(class="questions__list")
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/questions.js")
